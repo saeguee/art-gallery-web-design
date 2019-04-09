@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Personal Information</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="标准元素.css" rel="stylesheet">
+<link href="个人信息界面.css" rel="stylesheet">
+<script src="弹窗逻辑.js"></script>
+<script src="搜索逻辑.js"></script>
+<script src="默认执行.js"></script>
+</head>
+
+<body>
+<nav>
+	<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="#fff" fill-rule="evenodd"><path d="M0 39.954h39.845V.111H0v39.843zm36.978-2.867h-6.03v-7.853H28.08v7.853H2.867V2.977h34.111v34.11z"></path><path d="M16.068 7.096h-3.163L7.05 22.172h3.028l1.581-4.228h5.677l1.557 4.228h3.03L16.068 7.096zm-3.526 8.295l1.945-5.246 1.92 5.246h-3.865z"></path></g></svg>
+	<h1>E&C Gallery</h1>
+	<form action="" id="search-form">
+		<input type="text" value="" placeholder="Search by artist, gallery, etc.">
+		<button class="submit" onclick="returnSearchResult();">Submit</button>
+	</form>
+	<p class="nav-list">
+		<a href="主页.html">Home</a>
+		<a href="商品详情.html">Detail</a>
+		<a id="loginOrUsername" onclick="loginPopBox()">Log in</a>
+		<a id="registerOrExit" onclick="registerPopBox()">Register</a>
+	</p>
+</nav>
+
+<div class="login-reg-node">
+	<div id="login-popLayer" class="popLayer">
+		<div id="login-popBox" class="popBox">
+			<h1>LOG IN E&amp;C</h1>
+			<form id="login-form" action="">
+				<p>
+					<label>Username</label>
+					<input name="username" id="login-username" type="text" value="" placeholder="Input your username">
+					<span>Input your username.</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" id="login-password" name="password" value="" placeholder="Input your password">
+					<span>Input your password.</span>
+				</p>
+				<p>
+					<label>Captcha</label>
+					<input type="text" id="captcha-input" name="captcha" value="" placeholder="Input the captcha">
+					<span>Input the captcha.</span>
+					<input type="button" id="code" onclick="createCode()" value="1HAH">
+				</p>
+				<p>
+					<button id="login-submit" class="submit" onclick="return validate();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="loginCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+
+	<div id="register-popLayer" class="popLayer">
+		<div id="register-popBox" class="popBox">
+			<h1>REGISTER FOR E&amp;C</h1>
+			<form action="" id="register-form">
+				<p>
+					<label>Username</label>
+					<input name="username" type="text" value="" placeholder="Input your username">
+					<span>USERNAME contains >= 6 characters, including at least 1 letter and 1 number. e.g"christ304".</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" name="password" value="" placeholder="Input your password">
+					<span>PASSWORD contains >= 6 characters, not the same as the username, e.g."peppep".</span>
+				</p>
+				<p>
+					<label>Check Password</label>
+					<input type="password" name="repeat-password" value="" placeholder="Repeat the password above">
+					<span>This PASSWORD must be the same as the above one.</span>
+				</p>
+				<p>
+					<label>Phone</label>
+					<input type="text" name="phone" value="" placeholder="Input your tel">
+					<span>TEL must be 11 pure number, such as "13577913125"</span>
+				</p>
+				<p>
+					<button id="register-submit" class="submit" onclick="return registerError();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="registerCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+</div>
+
+<main>
+	<h1>Personal Information</h1>
+	<aside id="personal-info">
+		<h2 id="username" class="person-item">Christianus</h2>
+		<div id="profile-photo" class="person-item">
+    		<img src="images/WechatIMG70.jpeg" alt="your profile photo">
+    	</div>
+    	<button id="upload-photo" class="person-item">Upload New Profile Photo</button>
+		<div id="info-content" class="person-item">
+			<p>
+				<span><strong>Phone: <br></strong></span>
+				<span id="phone">166302782121663027821216630278212166302782121663027821216630278212166302782121663027821216630278212166302782121663027821216630278212166302782121663027821216630278212166302782121663027821216630278212166302782121663027821216630278212</span>
+			</p>
+			<p>
+				<span><strong>Email: <br></strong></span>
+				<span id="Email">christianus@sina.com</span>
+			</p>
+			<p>
+				<span><strong>Account Balance: <br></strong></span>
+				<span id="account-balance">$ 666.00</span>
+			</p>
+		</div>
+		<button id="recharge" class="person-item" onclick="alert(`Payment Success: $100`);">Recharge</button>
+	</aside>
+
+	<section id="upload">
+		<h2>Uploaded Art</h2>
+		<table id="upload-table">
+			<thead>
+				<th>No.</th>
+				<th>Art Name</th>
+				<th>Author</th>
+				<th>Description</th>
+			</thead>
+			<tr class="record">
+				<td>1</td>
+				<td>He Is Gone</td>
+				<td>Da Mo</td>
+				<td>превод е освободен. com превод на онлайн услуги, се основава на данни в интернет ресурси и технологии за обработка на естествен език предимство.</td>
+			</tr>
+			<tr class="record">
+				<td>2</td>
+				<td>She Is Gone</td>
+				<td>Dadisadjalwko</td>
+				<td>Mos Hongmosi, dsuioe sdds sjkdlj jsadkjdk kjk dweuiu, djajkdjkad.</td>
+			</tr>
+			<tr class="record">
+				<td>3</td>
+				<td>I Am Gone</td>
+				<td>Yhjkds HOIO</td>
+				<td>Moshe, ngmosi sdd.</td>
+			</tr>
+			<tr class="record">
+				<td>4</td>
+				<td>You Are Gone</td>
+				<td>Ys HOIO</td>
+				<td>Mosheii, dubala. Ngmosienos sdd.</td>
+			</tr>
+		</table>
+	</section>
+
+	<section id="purchase">
+		<h2>Purchase Order</h2>
+		<table id="purchase-table">
+			<thead>
+			<tr>
+				<th>0rder ID</th>
+				<th>Product Name</th>
+				<th>Date</th>
+				<th>Amount</th>
+			</tr>
+			</thead>
+			<tr class="record">
+				<td>101912830</td>
+				<td>Used to Wake at Dawn.</td>
+				<td>2011-07-11</td>
+				<td>$ 1.55</td>
+			</tr>
+			<tr class="record">
+				<td>100912830</td>
+				<td>Crush</td>
+				<td>2018-02-02</td>
+				<td>$ 22.55</td>
+			</tr>
+			<tr class="record">
+				<td>876912830</td>
+				<td>Singing My Blues</td>
+				<td>1981-10-26</td>
+				<td>$ 212.55</td>
+			</tr>
+			<tr class="record">
+				<td>238912456</td>
+				<td>Nothing to Lose</td>
+				<td>1991-01-24</td>
+				<td>$ 1212.55</td>
+			</tr>
+		</table>
+	</section>
+
+	<section class="sales table-container">
+		<h2>Sales Order</h2>
+		<table id="sales-table">
+			<thead>
+			<tr>
+				<th>0rder ID</th>
+				<th>Product Name</th>
+				<th>Date</th>
+				<th>Amount</th>
+			</tr>
+			</thead>
+			<tr class="record">
+				<td>238912835</td>
+				<td>HJI</td>
+				<td>1811-07-11</td>
+				<td>$ 24,222.55</td>
+			</tr>
+			<tr class="record">
+				<td>238912831</td>
+				<td>Tie</td>
+				<td>1912-02-24</td>
+				<td>$ 666.66</td>
+			</tr>
+			<tr class="record">
+				<td>238966830</td>
+				<td>TimSaye</td>
+				<td>1951-03-29</td>
+				<td>$ 2.55</td>
+			</tr>
+			<tr class="record">
+				<td>238945830</td>
+				<td>Ti</td>
+				<td>2019-08-24</td>
+				<td>$ ,555,212.05</td>
+			</tr>
+		</table>
+	</section>
+</main>
+
+<footer>
+	<p>版权所有©2019 christianus</p>
+</footer> 
+
+</body>
+</html>

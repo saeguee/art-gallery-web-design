@@ -1,0 +1,289 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2019-03-19 13:39:43
+ * @version $Id$
+ */
+
+/*1. reset*/
+*{
+	margin: 0 0;
+	font-size: 15px;
+	word-spacing:2px;
+	font-family:Georgia;
+}
+button:hover{
+	cursor: pointer;
+}
+/*2. 页面框架基本元素*/
+h1,h2{
+	font-family: fantasy;
+	text-shadow: -4px 4px 3px #999999;
+}
+header, nav, main, section, footer{
+	width: 100%;
+	min-width: 1400px;
+	clear: both;
+	float: left;
+}
+.author,.year,.price{
+	font-style: italic;
+}
+tr, td, th{
+	overflow: hidden;
+ 	text-overflow: ellipsis;
+ 	white-space: nowrap;
+}
+nav{
+	color: #fff;
+	background: rgb(0,0,0);
+	box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+	clear: both;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 65px;
+	padding-top:40px;
+	margin:40px auto 40px;
+}
+nav svg{
+	float: left;
+	margin-left:3%;
+	margin-top: -7px;
+}
+nav h1{
+	font-size: 25px;
+	text-shadow: 0.2em 0.2em 0.4em #fff;
+	float: left;
+	margin-left: 2%;
+}
+nav form{
+	float: left;
+	margin-left:10%;
+}
+nav form input[type="text"]{
+	width: 294px;
+}
+nav form button.submit{
+	color: #fff;
+	background: none;
+	margin-left: 10px;
+}
+nav form button.submit:hover{
+	background: purple;
+}
+nav p{
+	float: right;
+	margin-right:3%;
+}
+nav p.nav-list a{
+	color: #fff;
+	margin:auto 15px;
+	text-decoration: none;
+}
+.nav-list a:hover{
+	color: purple;
+	text-shadow: 1px 1px 2px #fff, 0 0 1em #fff, 0 0 0.2em blue;
+	cursor: pointer;
+}
+footer{
+	text-align: center;
+}
+
+/*3. 弹窗*/
+
+/*登录样式*/
+#code{
+	color:purple;
+	background-color: #ddeeff;
+	font-size: 16px;
+	font-family:fantasy;
+	font-style:italic;
+	font-weight:bold;
+	letter-spacing:2px;
+	height: 30px;
+	width: 90px;
+	border: solid 1px #20538D;
+	border-radius: 0;
+	float: right;
+	margin-top: 10px;
+	margin-right: 170px;
+}
+#code:hover{
+	cursor: pointer;
+}
+#login-popLayer #login-popBox{
+	height: 480px;
+	margin-top: -240px;
+}
+/*弹窗通用样式*/
+.homepage-button{
+	position: fixed;
+	top: 10px;
+	right:20px;
+}
+.popLayer{
+	background: rgba(0,0,0,0.7);
+	display: none;
+	position: fixed;
+	left: 0;
+	top:0;
+	height: 100%;
+	width: 100%;
+	z-index: 40;
+}
+.popBox{
+	background-color: #fff;
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	vertical-align:middle;
+	margin-left: -350px;
+	margin-top: -275px;
+	height: 550px;
+	width: 700px;
+	z-index: 50;
+}
+.popLayer .popBox form{
+	position: absolute;
+	top:80px;
+	left: 50%;
+	margin-left: -260px;
+	width: 650px;
+}
+.popLayer .popBox form p{
+	margin:25px auto;
+	display: block;
+	height: 55px;
+}
+.popLayer .popBox form p label{
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	width: 100px;
+	padding: 0 20px;
+	margin-left: 40px;
+}
+.popLayer .popBox form p span{
+	color: rebeccapurple;
+	font-size: 1px;
+	font-family: Arial;
+	vertical-align: middle;
+	display: inline-block;
+	width: 160px;
+	padding: 0 0 0 20px;
+}
+.popLayer .popBox form p>input{
+	color:#666;
+	display: inline-block;
+	font-size: 3px;
+	outline: none;
+	vertical-align: middle;
+	line-height: 17px;
+	width: 180px;
+	border: 2px solid rgb(216, 216, 216);
+	border-radius: 5px;
+}
+.popLayer .popBox form p .submit{
+	color:#fff;
+	background-color: #000;
+	font-size: 15px;
+	position: absolute;
+	left: 50%;
+	height: 70px;
+	width:70px;
+	border-radius: 50%;
+	margin-left: -82px;
+}
+.popLayer .popBox .register-close{
+	color: #000;
+	position: absolute;
+	top:5px;
+	right: 10px;
+}
+.popLayer .popBox h1{
+	color: #fff;
+	background-color: grey;
+	font-size: 30px;
+	text-shadow: 0.1em 0.1em 0.2em #000;
+	text-align: center;
+	display: block;
+	width: 100%;
+	height: 35px;
+	margin:35px auto 0px;
+}
+
+/*4. 展示商品的盒子*/
+
+.img-container{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+.img-container img{
+	width: 100%;
+	height: 100%;
+}
+.imginfo-container{
+	display: table-cell;
+	text-align: center;
+	border: solid 1px #fff;
+	border-left: none;
+	border-right: none;
+}
+.imginfo-container a:hover{
+	color: purple;
+	text-shadow: 0.2em 0.2em 0.7em grey;
+}
+.imginfo-container h1, section h1{
+	text-align: center;
+	text-shadow: 1px 1px 2px #fff, 0 0 0em #fff, 0 0 0.1em red;
+}
+.desc-item{
+	color: #fff;
+	clear: both;
+	margin:20px auto;
+	word-break: break-all;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+div.cell{
+	color: #fff;
+	height: 600px;
+	width: 30%;
+	/*左右margin不合并 而上下会合并*/
+	margin:30px 1.66%;
+	background: linear-gradient(to bottom right, #000, #fff);
+	float: left;
+}
+
+div#change-page{
+	float: left;
+	width: 70%;
+	margin:18px 15%;
+	text-align: center;
+}
+div#change-page a{
+	color: #fff;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+	background: #000;
+	font-family: fantasy;
+	font-size: 15px;
+	text-decoration: none;
+	height:40px;
+	min-width: 18px;
+	padding:8px 12px 5px 13px;
+	border-radius: 4px;
+	border: solid 1px #20538D;
+	margin:3px;
+}
+div#change-page a#current-page{
+	color: #f00;
+}
+div#change-page a:hover{
+	text-decoration: underline;
+	cursor:pointer;
+}

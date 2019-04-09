@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Product Details</title>
+<meta name="description" content="">
+<meta name="keywords" content="gallery, art design, photo, painting">
+<link href="标准元素.css" rel="stylesheet">
+<link href="商品详情.css" rel="stylesheet">
+<script src="弹窗逻辑.js"></script>
+<script src="搜索逻辑.js"></script>
+<script src="默认执行.js"></script>
+</head>
+
+<body>
+<nav>
+	<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="#fff" fill-rule="evenodd"><path d="M0 39.954h39.845V.111H0v39.843zm36.978-2.867h-6.03v-7.853H28.08v7.853H2.867V2.977h34.111v34.11z"></path><path d="M16.068 7.096h-3.163L7.05 22.172h3.028l1.581-4.228h5.677l1.557 4.228h3.03L16.068 7.096zm-3.526 8.295l1.945-5.246 1.92 5.246h-3.865z"></path></g></svg>
+	<h1>E&C Gallery</h1>
+	<form action="" id="search-form">
+		<input type="text" value="" placeholder="Search by artist, gallery, etc.">
+		<button class="submit" onclick="returnSearchResult(); return false;">Submit</button>
+	</form>
+	<p class="nav-list">
+		<a href="主页.html">Home</a>
+		<a href="商品详情.html">Detail</a>
+		<a id="loginOrUsername" onclick="loginPopBox()">Log in</a>
+		<a id="registerOrExit" onclick="registerPopBox()">Register</a>
+	</p>
+</nav>
+
+<div class="login-reg-node">
+	<div id="login-popLayer" class="popLayer">
+		<div id="login-popBox" class="popBox">
+			<h1>LOG IN E&amp;C</h1>
+			<form id="login-form" action="">
+				<p>
+					<label>Username</label>
+					<input name="username" id="login-username" type="text" value="" placeholder="Input your username">
+					<span>Input your username.</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" id="login-password" name="password" value="" placeholder="Input your password">
+					<span>Input your password.</span>
+				</p>
+				<p>
+					<label>Captcha</label>
+					<input type="text" id="captcha-input" name="captcha" value="" placeholder="Input the captcha">
+					<span>Input the captcha.</span>
+					<input type="button" id="code" onclick="createCode()" value="1HAH">
+				</p>
+				<p>
+					<button id="login-submit" class="submit" onclick="return validate();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="loginCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+
+	<div id="register-popLayer" class="popLayer">
+		<div id="register-popBox" class="popBox">
+			<h1>REGISTER FOR E&amp;C</h1>
+			<form action="" id="register-form">
+				<p>
+					<label>Username</label>
+					<input name="username" type="text" value="" placeholder="Input your username">
+					<span>USERNAME contains >= 6 characters, including at least 1 letter and 1 number. e.g"christ304".</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" name="password" value="" placeholder="Input your password">
+					<span>PASSWORD contains >= 6 characters, not the same as the username, e.g."peppep".</span>
+				</p>
+				<p>
+					<label>Check Password</label>
+					<input type="password" name="repeat-password" value="" placeholder="Repeat the password above">
+					<span>This PASSWORD must be the same as the above one.</span>
+				</p>
+				<p>
+					<label>Phone</label>
+					<input type="text" name="phone" value="" placeholder="Input your tel">
+					<span>TEL must be 11 pure number, such as "13577913125"</span>
+				</p>
+				<p>
+					<button id="register-submit" class="submit" onclick="return registerError();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="registerCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+</div>
+
+<main>
+	<h1 class="product-title">Her Moments of Glad Grace</h1>
+	<div class="cell">
+		<div class="img-container">
+			<img src="images/WechatIMG50.jpeg" alt="艺术品图片">
+		</div>
+		<div class="imginfo-container">
+			<a href="搜索.html" class="author desc-item"><span>By</span> Toemi Kethrisea</a>
+			<p class="price item" style="color: purple; text-decoration: underline; font-size:20px;">$ 8, 888</p>
+			<table id="detail-table" class="desc-item">
+				<tr>
+					<th>Date</th>
+					<td>1867</td>
+				</tr>
+				<tr>
+					<th>Demensions</th>
+					<td>265 cm * 430 cm</td>
+				</tr>
+				<tr>
+					<th>Home</th>
+					<td>Feizhuliu Museum</td>
+				</tr>
+				<tr>
+					<th>Genres</th>
+					<td>Shamate</td>
+				</tr>
+				<tr>
+					<th>Heat</th>
+					<td>🔥🔥🔥🔥</td>
+				</tr>
+			</table>
+			<button id="to-wishlist" onclick="alert(`Add it to wishlist successfully!`);">Add to</br>Wish List</button>
+			<button id="to-buy" onclick="addToCart();">Add to</br>Shopping</br>Cart</button>
+		</div>
+	</div>
+</main>
+<aside>
+	<div class="recommender" id="artist">
+		<h2>Guess You Like</br>These Authors</h2>
+		<ul>
+			<li><a href="搜索.html">author1</a></li>
+			<li><a href="搜索.html">author2</a></li>
+			<li><a href="搜索.html">author3</a></li>
+			<li><a href="搜索.html">author4</a></li>
+			<li><a href="搜索.html">author5</a></li>
+		</ul>
+	</div>
+	<div class="recommender" id="style">
+		<h2>Guess You Like</br>These Subjects</h2>
+		<ul>
+			<li><a href="搜索.html">style1</a></li></li>
+			<li><a href="搜索.html">style2</a></li></li>
+			<li><a href="搜索.html">style3</a></li></li>
+			<li><a href="搜索.html">style4</a></li></li>
+			<li><a href="搜索.html">style5</a></li></li>
+		</ul>
+	</div>
+</aside>
+<footer>
+	<p>版权所有©2019 christianus</p>
+</footer>
+</body>
+
+</html>

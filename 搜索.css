@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2019-03-19 13:52:00
+ * @version $Id$
+ */
+section.product-display div.cell{
+	color: #fff;
+	background: linear-gradient(to bottom left, #fff, #000);
+	float: left;
+	display: none;
+	height: 660px;
+	width: 30%;
+	/*左右margin不合并 而上下会合并*/
+	margin:30px 1.66%; 
+}
+section.product-display div.cell div.img-container{
+	height: 300px;
+	width: 300px;
+	margin:12% auto;
+	overflow:hidden;
+}
+section.product-display div.cell div.imginfo-container{
+	text-align: center;
+	overflow: hidden;
+	display: inline-block;
+	width: 80%;
+	height: 200px;
+	padding-top:2%;
+	padding-bottom:1.5%;
+    margin:0 10%;
+}
+section.product-display div.cell div.imginfo-container .desc-item{
+	font-size: 15px;
+	white-space: normal;
+	/*单词不切断换行*/
+	word-break: keep-all;
+	height: 20px;
+	margin:2% auto;
+}
+.imginfo-container a{
+	color:#fff;
+	background-color: #000;
+	text-decoration: none;
+	padding:3.5px 9px;
+	border:solid 1px #fff;
+}
+.imginfo-container a:hover{
+	color:#fff;
+	background-color: purple;
+}
+/*并列选择器*/
+section.product-display div.cell div.imginfo-container .desc-item.desc{
+	height: 35px;
+}
+section.product-display{
+	background-color: #791413FF;
+	padding-top: 35px;
+}
+section.search-config div.sort-filter{
+	margin: 10px 15px;
+}
+section.search-config h2.search-config-title{
+	font-size:35px;
+	text-align: center;
+}
+section.search-config h1.searched-keyword{
+	font-size:45px;
+	text-align: center;
+	margin:5px auto auto auto;
+}

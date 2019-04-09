@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Search Result</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="标准元素.css" rel="stylesheet">
+<link href="搜索.css" rel="stylesheet">
+<script src="弹窗逻辑.js"></script>
+<script src="搜索逻辑.js"></script>
+<script src="默认执行.js"></script>
+</head>
+
+<body onload="searchOnload()">
+<nav>
+	<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="#fff" fill-rule="evenodd"><path d="M0 39.954h39.845V.111H0v39.843zm36.978-2.867h-6.03v-7.853H28.08v7.853H2.867V2.977h34.111v34.11z"></path><path d="M16.068 7.096h-3.163L7.05 22.172h3.028l1.581-4.228h5.677l1.557 4.228h3.03L16.068 7.096zm-3.526 8.295l1.945-5.246 1.92 5.246h-3.865z"></path></g></svg>
+	<h1>E&C Gallery</h1>
+	<form action="" id="search-form">
+		<input type="text" value="" placeholder="Search by artist, gallery, etc.">
+		<button class="submit" onclick="returnSearchResult(); return false;">Submit</button>
+	</form>
+	<p class="nav-list">
+		<a href="主页.html">Home</a>
+		<a href="商品详情.html">Detail</a>
+		<a id="loginOrUsername" onclick="loginPopBox()">Log in</a>
+		<a id="registerOrExit" onclick="registerPopBox()">Register</a>
+	</p>
+</nav>
+
+<div class="login-reg-node">
+	<div id="login-popLayer" class="popLayer">
+		<div id="login-popBox" class="popBox">
+			<h1>LOG IN E&amp;C</h1>
+			<form id="login-form" action="">
+				<p>
+					<label>Username</label>
+					<input name="username" id="login-username" type="text" value="" placeholder="Input your username">
+					<span>Input your username.</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" id="login-password" name="password" value="" placeholder="Input your password">
+					<span>Input your password.</span>
+				</p>
+				<p>
+					<label>Captcha</label>
+					<input type="text" id="captcha-input" name="captcha" value="" placeholder="Input the captcha">
+					<span>Input the captcha.</span>
+					<input type="button" id="code" onclick="createCode()" value="1HAH">
+				</p>
+				<p>
+					<button id="login-submit" class="submit" onclick="return validate();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="loginCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+
+	<div id="register-popLayer" class="popLayer">
+		<div id="register-popBox" class="popBox">
+			<h1>REGISTER FOR E&amp;C</h1>
+			<form action="" id="register-form">
+				<p>
+					<label>Username</label>
+					<input name="username" type="text" value="" placeholder="Input your username">
+					<span>USERNAME contains >= 6 characters, including at least 1 letter and 1 number. e.g"christ304".</span>
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" name="password" value="" placeholder="Input your password">
+					<span>PASSWORD contains >= 6 characters, not the same as the username, e.g."peppep".</span>
+				</p>
+				<p>
+					<label>Check Password</label>
+					<input type="password" name="repeat-password" value="" placeholder="Repeat the password above">
+					<span>This PASSWORD must be the same as the above one.</span>
+				</p>
+				<p>
+					<label>Phone</label>
+					<input type="text" name="phone" value="" placeholder="Input your tel">
+					<span>TEL must be 11 pure number, such as "13577913125"</span>
+				</p>
+				<p>
+					<button id="register-submit" class="submit" onclick="return registerError();">Submit</button>
+				</p>
+			</form>
+			<a href="javascript: dvoid(0)" onclick="registerCloseBox()" class="register-close">close</a>
+		</div>
+	</div>
+</div>
+
+<main>
+	<section class="search-config">
+		<h2 class="search-config-title">The Search Result of :</h2>
+		<h1 class="searched-keyword"></h1>
+		<div class="sort-filter">
+			Sorted By 
+			<button onclick="sortByPrice()">Price</button>
+			<button onclick="sortByDate()">Released Date</button>
+			<button onclick="sortByHeat()">Heat</button>
+		</div>
+	</section>
+	<section class="product-display" id="search-result">
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG21.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">Faded Blossoms</h1>
+				<p class="price desc-item">$5,201,314</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">2017</p>
+				<p class="desc desc-item">Life is like a flower, beautiful but indifferent. She merely wishes to blossom brilliantly and fade plainly.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG25.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">The Kaiyuan Temple</h1>
+				<p class="price desc-item">$999,999,999</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">2018</p>
+				<p class="desc desc-item">This place used to be a Buddhist kingdom where pedestrians on the streets were saints.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG51.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">Ancient Chinese Woman</h1>
+				<p class="price desc-item">$2,300,000</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">1957</p>
+				<p class="desc desc-item">% Convert data into timetable NEWSST_2015 = datetime(NEWSST_2015)* NEWSST_2015 = table2timetable(NEWSST_2015); </p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG47.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">Arlington County Board</h1>
+				<p class="price desc-item">$11,111,111</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">1980</p>
+				<p class="desc desc-item">generate_series() with an interval as the third parameter actually returns a timestamp, not a date. Your sub-select returns the column date_created as a string (text) - and comparing a timestamp to a text doesn't work.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG70.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">DJK</h1>
+				<p class="price desc-item">$77,777</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">2000</p>
+				<p class="desc desc-item">I moved from my hometown to the capital for this job, with what should have been a undetermined-duration contract, 3 months of trial period renewable once. I was really eager and enthusiast to find a job after all the time I had been looking.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG67.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">Huishan Isn't Here</h1>
+				<p class="price desc-item">$66,168,618</p>
+				<p class="author desc-item">Not Saeguee</p>
+				<p class="year desc-item">2019</p>
+				<p class="desc desc-item">This woman is definitely not Huishan. Huishan's face is much smaller.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG22.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">Xianren Cave Culture</h1>
+				<p class="price desc-item">$432,434</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">1949</p>
+				<p class="desc desc-item">My former company is the example of start-ups malpractices. They're also vastly lying about themselves. They put me in a difficult situation in the past and I'd like to avoid other to fall into the same trap. I may use Glassdoor (or other means) to post an anonymous review, but my former employer will most likely link it back to me.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG53.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">The Late Shang Dynasty</h1>
+				<p class="price desc-item">$6,666,666</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">1937</p>
+				<p class="desc desc-item">Each Word Section (i.e. each chunk that is separated by a Word Section Break) can have its own headers and footers.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="img-container">
+				<img src="images/WechatIMG31.jpeg" alt="搜索结果图片">
+			</div>
+			<div class="imginfo-container">
+				<h1 class="title desc-item">YJK</h1>
+				<p class="price desc-item">$999,999,999</p>
+				<p class="author desc-item">Huishan Wu</p>
+				<p class="year desc-item">1840</p>
+				<p class="desc desc-item">These are called "Printers Crop Marks". They indicate the page margins, they are used by industrial printers to know where to slice the paper up to fit it in publications.</p>
+				<a href="商品详情.html">Learn More</a>
+			</div>
+		</div>
+	</section>
+</main>
+<div id="change-page">
+	<a id="previous-page">Previous&nbsp;Page</a>
+	<a class="pc" id="current-page">1</a>
+	<a class="pc">2</a>
+	<a class="pc">3</a>
+	<a class="pc">4</a>
+	<a class="pc">5</a>
+	<a class="pc">6</a>
+	<a class="pc">7</a>
+	<a class="pc">8</a>
+	<a class="pc">9</a>
+	<a class="pc">10</a>
+	<a id="next-page">Next&nbsp;Page</a>
+</div>
+
+<footer>
+	<p>版权所有©2019 christianus</p>
+</footer>
+
+</body>
+</html>
